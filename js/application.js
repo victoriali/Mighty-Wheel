@@ -43,7 +43,7 @@ $(document).ready(function(){
       totalProb = totalProb + eval($($('.itemInput')[i]).text());
     }
     
-    if (totalProb != 1){
+    if (totalProb > 1.000000001 || totalProb < 0.999999999){
         alert ("Total Probability should sum up to 1");
     }
 
@@ -56,13 +56,18 @@ $(document).ready(function(){
 	var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
                "#2E2C75", "#673A7E", "#CC0071", "#F80120",
                "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
-  var restaraunts = ["Wendy's", "McDonalds", "Chick-fil-a", "Five Guys",
-                     "Gold Star", "La Mexicana", "Chipotle", "Tazza Mia",
-                     "Panera", "Just Crepes", "Arby's", "Indian"];
+
+
+  var list = $('.itemName');
+  // var restaraunts = [];
+  // for (var i = 1; i < ($('.itemName').length); i++){
+  //   var currentElement = $($('.itemName')[i]).text();
+  //   restaraunts.push(currentElement);
+  // }
   
-  var numberofItems = ($('.itemInput').length) - 1;
+  var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
   var startAngle = 0;
-  var arc = Math.PI / (numberofItems/2);
+  var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
   var spinTimeout = null;
   
   var spinArcStart = 10;
@@ -76,6 +81,13 @@ $(document).ready(function(){
   }
   
   function drawRouletteWheel() {
+    var restaraunts = [];
+      for (var i = 1; i < ($('.itemName').length); i++){
+           var currentElement = $($('.itemName')[i]).text();
+           restaraunts.push(currentElement);
+      }
+    // var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+    // var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
     var canvas = document.getElementById("wheelcanvas");
     if (canvas.getContext) {
       var outsideRadius = 200;
@@ -96,7 +108,7 @@ $(document).ready(function(){
       ctx.font = 'bold 12px sans-serif';
       
 
-      for(var i = 0; i < (numberofItems); i++) {
+      for(var i = 0; i < (numberofItems); i++) {//!!!!!!!!!!!!!!!!!!!!
         var angle = startAngle + i * arc ;
         ctx.fillStyle = colors[i];
         
@@ -112,7 +124,7 @@ $(document).ready(function(){
         ctx.shadowBlur    = 1; // glow around the character
         ctx.shadowColor   = "rgb(220,220,220)";
         ctx.fillStyle = "black"; // font color
-        ctx.translate(220 + Math.cos(angle + arc / 2) * textRadius, 250 + Math.sin(angle + arc / 2) * textRadius);
+        ctx.translate(220 + Math.cos(angle + arc / 2) * textRadius, 250 + Math.sin(angle + arc / 2) * textRadius); //the word on the wheel
         ctx.rotate(angle + arc / 2 + Math.PI / 2);
         var text = restaraunts[i];
         ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
@@ -155,6 +167,11 @@ $(document).ready(function(){
   
 
   function stopRotateWheel() {
+    var restaraunts = [];
+      for (var i = 1; i < ($('.itemName').length); i++){
+           var currentElement = $($('.itemName')[i]).text();
+           restaraunts.push(currentElement);
+      }
     clearTimeout(spinTimeout);
     var degrees = startAngle * 180 / Math.PI + 90;
     var arcd = arc * 180 / Math.PI;
