@@ -16,31 +16,41 @@ $(document).ready(function(){
   }); 
 
   $('.createButton').click(function() {
+
     if($('.newItem-name').val() == ""){
         alert ("Item name cannot be empty");
     }
     else if (parseFloat($('.addProbability').val()) < 0 || parseFloat($('.addProbability').val()) > 1){
         alert ("Probability should be an number between 0 and 1");
     }
+
     else{ 
-        $('<div class="row">
-            <div class="itemName col-xs-4">
-              '+$('.newItem-name').val()+'
-            </div>
-            <div class="itemInput col-xs-4">
-              '+parseFloat($('.addProbability').val())+'
-            </div>
-            <div class="cancelInput col-xs-4">
-              <button class="button cancelButton">Cancel</button> 
-            </div> 
-            </div>').prependTo($('#items-list')).slideDown("slow");
-        $('.newcancelButton').click(function(i) {
-            i = $('.newcancelButton').index(this);
-            $($('.newcancelButton').parent().parent()[i]).fadeOut("slow", function(){
-            $($('.newcancelButton').parent().parent()[i]).remove();
+        $('<div class="row"><div class="itemName col-xs-4">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-4">'+parseFloat($('.addProbability').val())+'</div><div class="cancelInput col-xs-4"><button class="button newCancelButton">Cancel</button></div></div>').prependTo($('#realList')).slideDown("slow");
+        $('.newItem-name').val('');
+        $('.addProbability').val('');
+        $('.newCancelButton').click(function(i) {
+            i = $('.newCancelButton').index(this);
+            $($('.newCancelButton').parent().parent()[i]).fadeOut("slow", function(){
+            $($('.newCancelButton').parent().parent()[i]).remove();
             });
         });
     }
+  });
+
+  $(document).on("click","#checkSubmit",function(){
+    var totalProb = 0;
+    for(var i = 1; i < ($('.itemName').length); i++){
+      totalProb = totalProb + eval($($('.itemInput')[i]).text());
+    }
+    
+    if (totalProb != 1){
+        alert ("Total Probability should sum up to 1");
+    }
+
+    else{
+      draw();
+    }
+
   });
 
 	var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
@@ -50,8 +60,9 @@ $(document).ready(function(){
                      "Gold Star", "La Mexicana", "Chipotle", "Tazza Mia",
                      "Panera", "Just Crepes", "Arby's", "Indian"];
   
+  var numberofItems = ($('.itemInput').length) - 1;
   var startAngle = 0;
-  var arc = Math.PI / 6;
+  var arc = Math.PI / (numberofItems/2);
   var spinTimeout = null;
   
   var spinArcStart = 10;
@@ -85,7 +96,7 @@ $(document).ready(function(){
       ctx.font = 'bold 12px sans-serif';
       
 
-      for(var i = 0; i < 12; i++) {
+      for(var i = 0; i < (numberofItems); i++) {
         var angle = startAngle + i * arc ;
         ctx.fillStyle = colors[i];
         
@@ -150,7 +161,7 @@ $(document).ready(function(){
     var index = Math.floor((360 - degrees % 360) / arcd);
     ctx.save();
     ctx.font = 'bold 30px sans-serif';
-    var text = restaraunts[index]
+    var text = restaraunts[index]//this shows what the result is after rotation
     ctx.fillText(text, 220 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
   }
@@ -164,7 +175,7 @@ $(document).ready(function(){
   draw();
 	
   $(document).on("click","#spinNow",function(){
-    spin();
+      spin();
   });
 
 
