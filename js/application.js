@@ -65,9 +65,9 @@ $(document).ready(function(){
   //   restaraunts.push(currentElement);
   // }
   
-  var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+  // var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
   var startAngle = 0;
-  var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
+  // var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
   var spinTimeout = null;
   
   var spinArcStart = 10;
@@ -86,8 +86,8 @@ $(document).ready(function(){
            var currentElement = $($('.itemName')[i]).text();
            restaraunts.push(currentElement);
       }
-    // var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
-    // var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
+    var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+    var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
     var canvas = document.getElementById("wheelcanvas");
     if (canvas.getContext) {
       var outsideRadius = 200;
@@ -172,6 +172,8 @@ $(document).ready(function(){
            var currentElement = $($('.itemName')[i]).text();
            restaraunts.push(currentElement);
       }
+    var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+    var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
     clearTimeout(spinTimeout);
     var degrees = startAngle * 180 / Math.PI + 90;
     var arcd = arc * 180 / Math.PI;
