@@ -18,7 +18,7 @@ $(document).ready(function(){
   $('.createButton').click(function() {
 
     if($('.newItem-name').val() === ""){
-        alert ("Item name cannot be empty");
+        alert("Item name cannot be empty");
     }
 
     else{ 
@@ -42,11 +42,14 @@ $(document).ready(function(){
   var startAngle = 0;
   var spinTimeout = null;
   
-  var spinArcStart = 10;
+  // var spinArcStart = 10;
   var spinTime = 0;
   var spinTimeTotal = 0;
   
   var ctx;
+  var spinAngleStart;
+
+  var outsideRadius = 200;
   
   function draw() {
     drawRouletteWheel();
@@ -59,12 +62,13 @@ $(document).ready(function(){
            restaraunts.push(currentElement);
       }
 
+
     var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
     var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!**************
 
     var canvas = document.getElementById("wheelcanvas");
       if (canvas.getContext) {
-        var outsideRadius = 200;
+        // var outsideRadius = 200;
         var textRadius = 160;
         var insideRadius = 5;
         var circleBorder = 208;
