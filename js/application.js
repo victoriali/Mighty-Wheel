@@ -23,7 +23,7 @@ $(document).ready(function(){
     }
 
     else{ 
-        $('<div class="row"><div class="itemName col-xs-4">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-4">'+parseFloat($('.addProbability').val())+'</div><div class="cancelInput col-xs-4"><button class="button newCancelButton">Cancel</button></div></div>').prependTo($('#realList')).slideDown("slow");
+        $('<div class="row"><div class="itemName col-xs-4 col-xs-offset-1">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-4">'+parseFloat($('.addProbability').val())+'</div><div class="cancelInput col-xs-3"><button class="button newCancelButton">Cancel</button></div></div>').prependTo($('#realList')).slideDown("slow");
         $('.newItem-name').val('');
         $('.addProbability').val('');
         $('.newCancelButton').click(function(i) {
@@ -58,9 +58,9 @@ $(document).ready(function(){
   
   function drawRouletteWheel() {
 
-    var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
-               "#2E2C75", "#673A7E", "#CC0071", "#F80120",
-               "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
+    var colors = ["#CC0071", "#F80120","#F35B20", "#FB9A00", 
+                  "#FFCC00", "#FEF200","#B8D430", "#3AB745", 
+                  "#029990", "#3501CB","#2E2C75", "#673A7E"];
 
     var multColor = [];
       for (var i = 0; i <= (colors.length); i++){
