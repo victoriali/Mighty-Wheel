@@ -35,10 +35,12 @@ $(document).ready(function(){
     }
   });
 
+  $('.second').hide();
   $(document).on("click","#readytoSpin",function(){
     draw();
+    $('.first').hide();
+    $('.second').show();
   });
-
 
   var startAngle = 0;
   var spinTimeout = null;
@@ -195,6 +197,11 @@ $(document).ready(function(){
   
   $(document).on("click","#spinNow",function(){
       spin();
+  });
+
+  $(document).on("click","#returnFirst",function(){
+      $('.second').hide();
+      $('.first').show();
   });
 
 
