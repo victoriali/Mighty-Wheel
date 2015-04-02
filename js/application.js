@@ -35,21 +35,10 @@ $(document).ready(function(){
     }
   });
 
-  // var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
-  //              "#2E2C75", "#673A7E", "#CC0071", "#F80120",
-  //              "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
+  $(document).on("click","#readytoSpin",function(){
+    draw();
+  });
 
-  // var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
-  //              "#2E2C75", "#673A7E", "#CC0071", "#F80120",
-  //              "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
-
-  // var multColor = [];
-  //     for (var i = 0; i <= (colors.length); i++){
-  //       for (var j = 1; j <= (parseInt($($('.itemInput')[i]).text())); j++){
-  //          var currentColor = colors[i];
-  //          multColor.push(currentColor);
-  //       }
-  //     }
 
   var startAngle = 0;
   var spinTimeout = null;
@@ -68,11 +57,7 @@ $(document).ready(function(){
   }
   
   function drawRouletteWheel() {
-    // var restaraunts = [];
-    //   for (var j = 1; j < ($('.itemName').length); j++){
-    //        var currentElement = $($('.itemName')[j]).text();
-    //        restaraunts.push(currentElement);
-    //   }
+
     var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
                "#2E2C75", "#673A7E", "#CC0071", "#F80120",
                "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
@@ -176,12 +161,6 @@ $(document).ready(function(){
   
 
   function stopRotateWheel() {
-    // var restaraunts = [];
-    //   for (var j = 1; j < ($('.itemName').length); j++){
-    //        var currentElement = $($('.itemName')[j]).text();
-    //        restaraunts.push(currentElement);
-    //   }
-    // var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
 
      var restaraunts = [];
       for (var i = 1; i < ($('.itemName').length); i++){
