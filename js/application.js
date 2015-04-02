@@ -34,10 +34,21 @@ $(document).ready(function(){
     }
   });
 
-  var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
-               "#2E2C75", "#673A7E", "#CC0071", "#F80120",
-               "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
+  // var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
+  //              "#2E2C75", "#673A7E", "#CC0071", "#F80120",
+  //              "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
 
+  // var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
+  //              "#2E2C75", "#673A7E", "#CC0071", "#F80120",
+  //              "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
+
+  // var multColor = [];
+  //     for (var i = 0; i <= (colors.length); i++){
+  //       for (var j = 1; j <= (parseInt($($('.itemInput')[i]).text())); j++){
+  //          var currentColor = colors[i];
+  //          multColor.push(currentColor);
+  //       }
+  //     }
 
   var startAngle = 0;
   var spinTimeout = null;
@@ -56,14 +67,34 @@ $(document).ready(function(){
   }
   
   function drawRouletteWheel() {
-    var restaraunts = [];
-      for (var j = 1; j < ($('.itemName').length); j++){
-           var currentElement = $($('.itemName')[j]).text();
-           restaraunts.push(currentElement);
+    // var restaraunts = [];
+    //   for (var j = 1; j < ($('.itemName').length); j++){
+    //        var currentElement = $($('.itemName')[j]).text();
+    //        restaraunts.push(currentElement);
+    //   }
+    var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
+               "#2E2C75", "#673A7E", "#CC0071", "#F80120",
+               "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
+
+    var multColor = [];
+      for (var i = 0; i <= (colors.length); i++){
+        for (var j = 1; j <= (parseInt($($('.itemInput')[i]).text())); j++){
+           var currentColor = colors[i];
+           multColor.push(currentColor);
+        }
       }
 
+    var restaraunts = [];
+      for (var i = 1; i < ($('.itemName').length); i++){
+        for (var j = 1; j <= (parseInt($($('.itemInput')[i]).text())); j++){
+           var currentElement = $($('.itemName')[i]).text();
+           restaraunts.push(currentElement);
+        }
+      }
 
-    var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+    var numberofItems = (restaraunts.length);
+
+    // var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
     var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!**************
 
     var canvas = document.getElementById("wheelcanvas");
@@ -88,7 +119,7 @@ $(document).ready(function(){
 
         for(var i = 0; i < (numberofItems); i++) {//!!!!!!!!!!!!!!!!!!!!
           var angle = startAngle + i * arc ;
-          ctx.fillStyle = colors[i];
+          ctx.fillStyle = multColor[i];
           
           ctx.beginPath();
           ctx.arc(220, 250, outsideRadius, angle, angle + arc, false);
@@ -144,12 +175,24 @@ $(document).ready(function(){
   
 
   function stopRotateWheel() {
-    var restaraunts = [];
-      for (var j = 1; j < ($('.itemName').length); j++){
-           var currentElement = $($('.itemName')[j]).text();
+    // var restaraunts = [];
+    //   for (var j = 1; j < ($('.itemName').length); j++){
+    //        var currentElement = $($('.itemName')[j]).text();
+    //        restaraunts.push(currentElement);
+    //   }
+    // var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+
+     var restaraunts = [];
+      for (var i = 1; i < ($('.itemName').length); i++){
+        for (var j = 1; j <= (parseInt($($('.itemInput')[i]).text())); j++){
+           var currentElement = $($('.itemName')[i]).text();
            restaraunts.push(currentElement);
+        }
       }
-    var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+
+    var numberofItems = (restaraunts.length);
+
+
     var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
     clearTimeout(spinTimeout);
     var degrees = startAngle * 180 / Math.PI + 90;
