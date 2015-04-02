@@ -18,7 +18,7 @@ $(document).ready(function(){
   $('.createButton').click(function() {
 
     if($('.newItem-name').val() === ""){
-        alert("Item name cannot be empty");
+        window.alert("Item name cannot be empty");
     }
 
     else{ 
