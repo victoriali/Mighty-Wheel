@@ -18,7 +18,7 @@ $(document).ready(function(){
   $('.createButton').click(function() {
 
     if($('.newItem-name').val() === ""){
-        alert("Item name cannot be empty");
+        window.alert("Item name cannot be empty");
     }
 
     else{ 
@@ -57,8 +57,8 @@ $(document).ready(function(){
   
   function drawRouletteWheel() {
     var restaraunts = [];
-      for (var i = 1; i < ($('.itemName').length); i++){
-           var currentElement = $($('.itemName')[i]).text();
+      for (var j = 1; j < ($('.itemName').length); j++){
+           var currentElement = $($('.itemName')[j]).text();
            restaraunts.push(currentElement);
       }
 
@@ -145,8 +145,8 @@ $(document).ready(function(){
 
   function stopRotateWheel() {
     var restaraunts = [];
-      for (var i = 1; i < ($('.itemName').length); i++){
-           var currentElement = $($('.itemName')[i]).text();
+      for (var j = 1; j < ($('.itemName').length); j++){
+           var currentElement = $($('.itemName')[j]).text();
            restaraunts.push(currentElement);
       }
     var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
