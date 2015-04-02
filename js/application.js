@@ -15,7 +15,7 @@ $(document).ready(function(){
     });
   }); 
 
-  $('.createButton').click(function() {
+  $('.createButton').click(function() {//hello
 
     if($('.newItem-name').val() === ""){
         alert ("Item name cannot be empty");
@@ -61,11 +61,6 @@ $(document).ready(function(){
 
     var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
     var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!**************
-    // var arc = []; //*****************
-    //   for (var i = 1; i < ($('.itemName').length); i++){
-    //        var currentProb = 2 * Math.PI * parseFloat($($('.itemInput')[i]).text());
-    //        arc.push(currentProb);
-    //   }
 
     var canvas = document.getElementById("wheelcanvas");
       if (canvas.getContext) {
