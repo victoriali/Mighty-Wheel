@@ -102,7 +102,7 @@ $(document).ready(function(){
         ctx.strokeStyle = "grey";
         ctx.lineWidth = 0;
         
-        ctx.font = 'bold 12px sans-serif';
+        ctx.font = '15px Georgia';
         
 
         for(var i = 0; i < (numberofItems); i++) {//!!!!!!!!!!!!!!!!!!!!
@@ -182,7 +182,7 @@ $(document).ready(function(){
     var arcd = arc * 180 / Math.PI;
     var index = Math.floor((360 - degrees % 360) / arcd);
     ctx.save();
-    ctx.font = 'bold 30px sans-serif';
+    ctx.font = '30px Georgia';
     var text = restaraunts[index];//this shows what the result is after rotation
     ctx.fillText(text, 220 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
