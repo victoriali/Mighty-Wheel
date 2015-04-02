@@ -17,11 +17,8 @@ $(document).ready(function(){
 
   $('.createButton').click(function() {
 
-    if($('.newItem-name').val() == ""){
+    if($('.newItem-name').val() === ""){
         alert ("Item name cannot be empty");
-    }
-    else if (parseFloat($('.addProbability').val()) < 0 || parseFloat($('.addProbability').val()) > 1){
-        alert ("Probability should be an number between 0 and 1");
     }
 
     else{ 
@@ -37,37 +34,12 @@ $(document).ready(function(){
     }
   });
 
-  $(document).on("click","#checkSubmit",function(){
-    var totalProb = 0;
-    for(var i = 1; i < ($('.itemName').length); i++){
-      totalProb = totalProb + eval($($('.itemInput')[i]).text());
-    }
-    
-    if (totalProb > 1.000000001 || totalProb < 0.999999999){
-        alert ("Total Probability should sum up to 1");
-    }
-
-    else{
-      draw();
-    }
-
-  });
-
-	var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
+  var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
                "#2E2C75", "#673A7E", "#CC0071", "#F80120",
                "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
 
 
-  var list = $('.itemName');
-  // var restaraunts = [];
-  // for (var i = 1; i < ($('.itemName').length); i++){
-  //   var currentElement = $($('.itemName')[i]).text();
-  //   restaraunts.push(currentElement);
-  // }
-  
-  // var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
   var startAngle = 0;
-  // var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
   var spinTimeout = null;
   
   var spinArcStart = 10;
@@ -86,51 +58,58 @@ $(document).ready(function(){
            var currentElement = $($('.itemName')[i]).text();
            restaraunts.push(currentElement);
       }
-    var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
-    var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!
-    var canvas = document.getElementById("wheelcanvas");
-    if (canvas.getContext) {
-      var outsideRadius = 200;
-      var textRadius = 160;
-      var insideRadius = 5;
-      var circleBorder = 208;
-      
-      ctx = canvas.getContext("2d");
-      ctx.clearRect(0,0,500,500);
-      
-      ctx.arc(220, 250, circleBorder, 0 , 2 * Math.PI, false);
-      ctx.fillStyle = "grey";
-      ctx.fill();
-      
-      ctx.strokeStyle = "grey";
-      ctx.lineWidth = 0;
-      
-      ctx.font = 'bold 12px sans-serif';
-      
 
-      for(var i = 0; i < (numberofItems); i++) {//!!!!!!!!!!!!!!!!!!!!
-        var angle = startAngle + i * arc ;
-        ctx.fillStyle = colors[i];
+    var numberofItems = ($('.itemInput').length) - 1;//!!!!!!!!!!!!!!!!!
+    var arc = Math.PI / (numberofItems/2);//!!!!!!!!!!!!!!!!!!!!**************
+    // var arc = []; //*****************
+    //   for (var i = 1; i < ($('.itemName').length); i++){
+    //        var currentProb = 2 * Math.PI * parseFloat($($('.itemInput')[i]).text());
+    //        arc.push(currentProb);
+    //   }
+
+    var canvas = document.getElementById("wheelcanvas");
+      if (canvas.getContext) {
+        var outsideRadius = 200;
+        var textRadius = 160;
+        var insideRadius = 5;
+        var circleBorder = 208;
         
-        ctx.beginPath();
-        ctx.arc(220, 250, outsideRadius, angle, angle + arc, false);
-        ctx.arc(220, 250, insideRadius, angle + arc, angle, true);
-        ctx.stroke();
+        ctx = canvas.getContext("2d");
+        ctx.clearRect(0,0,500,500);
+        
+        ctx.arc(220, 250, circleBorder, 0 , 2 * Math.PI, false);
+        ctx.fillStyle = "grey";
         ctx.fill();
         
-        ctx.save();
-        ctx.shadowOffsetX = 0; // shadow of character
-        ctx.shadowOffsetY = 0; // shadow of character
-        ctx.shadowBlur    = 1; // glow around the character
-        ctx.shadowColor   = "rgb(220,220,220)";
-        ctx.fillStyle = "black"; // font color
-        ctx.translate(220 + Math.cos(angle + arc / 2) * textRadius, 250 + Math.sin(angle + arc / 2) * textRadius); //the word on the wheel
-        ctx.rotate(angle + arc / 2 + Math.PI / 2);
-        var text = restaraunts[i];
-        ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-        ctx.restore();
+        ctx.strokeStyle = "grey";
+        ctx.lineWidth = 0;
+        
+        ctx.font = 'bold 12px sans-serif';
+        
+
+        for(var i = 0; i < (numberofItems); i++) {//!!!!!!!!!!!!!!!!!!!!
+          var angle = startAngle + i * arc ;
+          ctx.fillStyle = colors[i];
+          
+          ctx.beginPath();
+          ctx.arc(220, 250, outsideRadius, angle, angle + arc, false);
+          ctx.arc(220, 250, insideRadius, angle + arc, angle, true);
+          ctx.stroke();
+          ctx.fill();
+          
+          ctx.save();
+          ctx.shadowOffsetX = 0; // shadow of character
+          ctx.shadowOffsetY = 0; // shadow of character
+          ctx.shadowBlur    = 1; // glow around the character
+          ctx.shadowColor   = "rgb(220,220,220)";
+          ctx.fillStyle = "black"; // font color
+          ctx.translate(220 + Math.cos(angle + arc/ 2) * textRadius, 250 + Math.sin(angle + arc/ 2) * textRadius); //the word on the wheel
+          ctx.rotate(angle + arc / 2 + Math.PI / 2);
+          var text = restaraunts[i];
+          ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+          ctx.restore();
+        } 
       } 
-      
       //Arrow
       ctx.fillStyle = "black";
       ctx.beginPath();
@@ -143,7 +122,6 @@ $(document).ready(function(){
       ctx.lineTo(220 - 4, 250 - (outsideRadius - 5));
       ctx.lineTo(220 - 4, 250 - (outsideRadius + 5));
       ctx.fill();
-    }
   }
   
   function spin() {
@@ -180,7 +158,7 @@ $(document).ready(function(){
     var index = Math.floor((360 - degrees % 360) / arcd);
     ctx.save();
     ctx.font = 'bold 30px sans-serif';
-    var text = restaraunts[index]//this shows what the result is after rotation
+    var text = restaraunts[index];//this shows what the result is after rotation
     ctx.fillText(text, 220 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
   }
@@ -192,12 +170,10 @@ $(document).ready(function(){
   }
   
   draw();
-	
+  
   $(document).on("click","#spinNow",function(){
       spin();
   });
 
 
 });
-
-
