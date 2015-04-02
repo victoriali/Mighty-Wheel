@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
   $(".addProbability").css(
     "width","100px"
   );
@@ -101,14 +102,14 @@ $(document).ready(function(){
       if (canvas.getContext) {
         // var outsideRadius = 200;
         var textRadius = 160;
-        var insideRadius = 5;
+        var insideRadius = 80;
         var circleBorder = 208;
         
         ctx = canvas.getContext("2d");
         ctx.clearRect(0,0,500,500);
         
-        ctx.arc(220, 250, circleBorder, 0 , 2 * Math.PI, false);
-        ctx.fillStyle = "grey";
+        ctx.arc(220, 250, circleBorder, 0 , 2 * Math.PI, false);//outer grey circle i inserted
+        ctx.fillStyle = "white";
         ctx.fill();
         
         ctx.strokeStyle = "grey";
@@ -130,7 +131,7 @@ $(document).ready(function(){
           ctx.save();
           ctx.shadowOffsetX = 0; // shadow of character
           ctx.shadowOffsetY = 0; // shadow of character
-          ctx.shadowBlur    = 1; // glow around the character
+          ctx.shadowBlur    = 0; // glow around the character
           ctx.shadowColor   = "rgb(220,220,220)";
           ctx.fillStyle = "black"; // font color
           ctx.translate(220 + Math.cos(angle + arc/ 2) * textRadius, 250 + Math.sin(angle + arc/ 2) * textRadius); //the word on the wheel
@@ -147,7 +148,7 @@ $(document).ready(function(){
       ctx.lineTo(220 + 4, 250 - (outsideRadius + 5));
       ctx.lineTo(220 + 4, 250 - (outsideRadius - 5));
       ctx.lineTo(220 + 9, 250 - (outsideRadius - 5));
-      ctx.lineTo(220 + 0, 250 - (outsideRadius - 13));
+      ctx.lineTo(220 + 0, 250 - (outsideRadius - 20));
       ctx.lineTo(220 - 9, 250 - (outsideRadius - 5));
       ctx.lineTo(220 - 4, 250 - (outsideRadius - 5));
       ctx.lineTo(220 - 4, 250 - (outsideRadius + 5));

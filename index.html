@@ -12,107 +12,89 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/application.js"></script>
 
+    <link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
   </head>
 
   <body>
     <div class = "container-fluid">
-      <div class = "row">
+    	<div class = "wrapper">
+	      <div class = "title text-center">
+	    		<h1>The Mighty Wheel</h1>
+	      </div>
 
-        <div class="col-sm-6">
-          <h1>List of items</h1>
-	          <div id="itemsList">
-	          	<div class="row">
-					      <div class="itemName col-xs-4">
-					        <label>Item</label>
-					      </div>
-					      <div class="itemInput col-xs-4">
-					        <label>Probability</label>
-					      </div>
-					    </div>
+	      <div class = "playbox">
+		      <div class = "row">
+		        <div class="col-sm-6">
+		          <h2 class = "headline text-center">type your choices here...</h2>
+			          <div id="itemsList">
+			          	<div class="row">
+							      <div class="itemName col-xs-4">
+							        <label>Item</label>
+							      </div>
+							      <div class="itemInput col-xs-4">
+							        <label>Preference Level</label>
+							      </div>
+							    </div>
 
-							<section id = "realList">
-			          <div class="row">
-						      <div class="itemName col-xs-4">Mcdonald1</div>
-						      <div class="itemInput col-xs-4">3</div>
-						      <div class="cancelInput col-xs-4">
-						        <button class="button cancelButton">Cancel</button> 
-						      </div> 
-						    </div>
+									<section id = "realList">
+					          <div class="row">
+								      <div class="itemName col-xs-4">Mcdonald1</div>
+								      <div class="itemInput col-xs-4">2</div>
+								      <div class="cancelInput col-xs-4">
+								        <button class="button cancelButton">Cancel</button> 
+								      </div> 
+								    </div>
 
-						    <div class="row">
-						      <div class="itemName col-xs-4">Mcdonald2</div>
-						      <div class="itemInput col-xs-4">2</div>
-						      <div class="cancelInput col-xs-4">
-						        <button class="button cancelButton">Cancel</button> 
-						      </div> 
-						    </div>
+								    <div class="row">
+								      <div class="itemName col-xs-4">Mcdonald2</div>
+								      <div class="itemInput col-xs-4">2</div>
+								      <div class="cancelInput col-xs-4">
+								        <button class="button cancelButton">Cancel</button> 
+								      </div> 
+								    </div>
 
-						    <div class="row">
-						      <div class="itemName col-xs-4">Mcdonald3</div>
-						      <div class="itemInput col-xs-4">1</div>
-						      <div class="cancelInput col-xs-4">
-						        <button class="button cancelButton">Cancel</button> 
-						      </div> 
-						    </div>
+								    <div class="row">
+								      <div class="itemName col-xs-4">Mcdonald3</div>
+								      <div class="itemInput col-xs-4">1</div>
+								      <div class="cancelInput col-xs-4">
+								        <button class="button cancelButton">Cancel</button> 
+								      </div> 
+								    </div>
 
-						    <div class="row">
-						      <div class="itemName col-xs-4">Mcdonald4</div>
-						      <div class="itemInput col-xs-4">2</div>
-						      <div class="cancelInput col-xs-4">
-						        <button class="button cancelButton">Cancel</button> 
-						      </div> 
-						    </div>
+								    <div class="row">
+							        <div class="newItemName col-xs-4">
+							          <input class="newItem-name">
+							        </div>
+							        <div class="newItemInput col-xs-4">
+							          <input class="addProbability" value=0>
+							        </div>
+								      <div class="cancelInput col-xs-4">
+							          <button class="button createButton">Create</button>
+							        </div>
+							      </div>
+							      <br>
+							      <br>
+							      <div class = "hot container">
+					       		<p><a href="#" class="btn">Ready to Spin ?</a></p>
+					      		</div>
+							    </section>
+				      </div>
+	        </div>
 
-						    <div class="row">
-						      <div class="itemName col-xs-4">Mcdonald5</div>
-						      <div class="itemInput col-xs-4">3</div>
-						      <div class="cancelInput col-xs-4">
-						        <button class="button cancelButton">Cancel</button> 
-						      </div> 
-						    </div>
+	        <div class="col-sm-6">
+	          <h2 class = "headline text-center">now Spin the Wheel</h2>
+	          	<canvas id="wheelcanvas" width="480" height="480"></canvas>
+	          <div class = "hot container">
+					    <p><a href="#" class="btn" id = "spinNow">Spin Me</a></p>
+					  </div>
+	        </div>
 
-						    <div class="row">
-						      <div class="itemName col-xs-4">Mcdonald6</div>
-						      <div class="itemInput col-xs-4">2</div>
-						      <div class="cancelInput col-xs-4">
-						        <button class="button cancelButton">Cancel</button> 
-						      </div> 
-						    </div>
-
-						    <div class="row">
-						      <div class="itemName col-xs-4">Mcdonald7</div>
-						      <div class="itemInput col-xs-4">1</div>
-						      <div class="cancelInput col-xs-4">
-						        <button class="button cancelButton">Cancel</button> 
-						      </div> 
-						    </div>
-
-						    <div class="row">
-					        <div class="newItemName col-xs-4">
-					          <input class="newItem-name">
-					        </div>
-					        <div class="newItemInput col-xs-4">
-					          <input class="addProbability" value=0>
-					        </div>
-						      <div class="cancelInput col-xs-4">
-					          <button class="button createButton">Create</button>
-					        </div>
-					      </div>
-					    </section>
-			      </div>
-        </div>
-
-        <div class="col-sm-6">
-          <h1>Now Spin the Wheel</h1>
-          <canvas id="wheelcanvas" width="500" height="500"></canvas>
-          <div>
-            <input id="spinNow" type="button" value="spin" >
-          </div>
-        </div>
-
-      </div>
+	      </div>
+	    </div>
     </div>
   </body>
 
