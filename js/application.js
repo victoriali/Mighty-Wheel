@@ -23,7 +23,7 @@ $(document).ready(function(){
     }
 
     else{ 
-        $('<div class="row"><div class="itemName col-xs-4 col-xs-offset-1">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-4">'+parseFloat($('.addProbability').val())+'</div><div class="cancelInput col-xs-3"><button class="button newCancelButton">x</button></div></div>').prependTo($('#realList')).slideDown("slow");
+        $('<div class="row"><div class="itemName col-xs-3 col-xs-offset-2">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-3">'+parseFloat($('.addProbability').val())+'</div><div class="cancelInput col-xs-3"><button class="button newCancelButton">x</button></div></div>').prependTo($('#realList')).slideDown("slow");
         $('.newItem-name').val('');
         $('.addProbability').val('');
         $('.newCancelButton').click(function(i) {
@@ -142,22 +142,6 @@ $(document).ready(function(){
       ctx.fill();
   }
 
-  function resize() {
-  // Our canvas must cover full height of screen
-  // regardless of the resolution
-  var height = window.innerHeight;
-  
-  // So we need to calculate the proper scaled width
-  // that should work well with every resolution
-  var ratio = canvas.width/canvas.height;
-  var width = height * ratio;
-  
-  canvas.style.width = width+'px';
-  canvas.style.height = height+'px';
-  }
-
-window.addEventListener('load', resize, false);
-window.addEventListener('resize', resize, false);
   
   function spin() {
     spinAngleStart = Math.random() * 10 + 10;
