@@ -216,6 +216,7 @@ $(document).ready(function(){
   });
 
   $(document).on("click","#returnFirst",function(){
+      $($('.itemName').parent()).remove();
       $('.second').hide();
       $('.first').show("slow");
   });
