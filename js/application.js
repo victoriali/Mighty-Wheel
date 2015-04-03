@@ -17,7 +17,7 @@ $(document).ready(function(){
   }); 
 
   var resultInput;
-  
+
   $(document).on("click",".starRating",function(){
       resultInput = $(this).attr("value");
   });
@@ -44,8 +44,15 @@ $(document).ready(function(){
   $('.second').hide();
   $(document).on("click","#readytoSpin",function(){
     draw();
-    $('.first').hide();
-    $('.second').show();
+
+    if($('.itemName').length <= 3){
+      $('.zeroWarning').text("Oops! Maybe try enter at least 2 items?");
+    }
+
+    else{
+      $('.first').hide();
+      $('.second').show();
+    }
   });
 
   var startAngle = 0;
