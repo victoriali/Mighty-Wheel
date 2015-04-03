@@ -216,7 +216,10 @@ $(document).ready(function(){
   });
 
   $(document).on("click","#returnFirst",function(){
-      $($('.itemName').parent()).remove();
+    for(var i = 1; i < ($('.itemName').length); i++){
+      $($('.itemName').parent()[i]).remove();
+      i--;
+    }
       $('.second').hide();
       $('.first').show("slow");
   });
