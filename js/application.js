@@ -42,16 +42,18 @@ $(document).ready(function(){
   });
 
   $('.second').hide();
+  $('.zeroWarning').hide();
   $(document).on("click","#readytoSpin",function(){
     draw();
 
     if($('.itemName').length < 3){
-      $('.zeroWarning').text("Oops! Maybe try enter at least 2 items?");
+      $('.zeroWarning').show("slow");
     }
 
     else{
       $('.first').hide();
-      $('.second').show();
+      $('.zeroWarning').hide();
+      $('.second').show("slow");
     }
   });
 
@@ -215,7 +217,7 @@ $(document).ready(function(){
 
   $(document).on("click","#returnFirst",function(){
       $('.second').hide();
-      $('.first').show();
+      $('.first').show("slow");
   });
 
 });
