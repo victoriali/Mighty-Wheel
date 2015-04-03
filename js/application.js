@@ -16,6 +16,12 @@ $(document).ready(function(){
     });
   }); 
 
+  var resultInput;
+  
+  $(document).on("click",".starRating",function(){
+      resultInput = $(this).attr("value");
+  });
+
   $('.createButton').click(function() {
 
     if($('.newItem-name').val() === ""){
@@ -23,7 +29,7 @@ $(document).ready(function(){
     }
 
     else{ 
-        $('<div class="row"><div class="itemName col-xs-3 col-xs-offset-2">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-3">'+parseFloat($('.addProbability').val())+'</div><div class="cancelInput col-xs-3"><button class="button newCancelButton">x</button></div></div>').prependTo($('#realList')).slideDown("slow");
+        $('<div class="row"><div class="itemName col-xs-3 col-xs-offset-2">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-3">'+resultInput+'</div><div class="cancelInput col-xs-3"><button class="button newCancelButton">x</button></div></div>').prependTo($('#realList')).slideDown("slow");
         $('.newItem-name').val('');
         $('.addProbability').val('');
         $('.newCancelButton').click(function(i) {
@@ -204,6 +210,5 @@ $(document).ready(function(){
       $('.second').hide();
       $('.first').show();
   });
-
 
 });
