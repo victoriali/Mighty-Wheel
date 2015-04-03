@@ -6,7 +6,7 @@ $(document).ready(function(){
   );
 
   $(".newItem-name").css(
-    "width","100px"
+    "width","80px"
   );
 
   $('.cancelButton').click(function(i) {
@@ -29,7 +29,7 @@ $(document).ready(function(){
     }
 
     else{ 
-        $('<div class="row"><div class="itemName col-xs-3 col-xs-offset-2">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-3">'+resultInput+'</div><div class="cancelInput col-xs-3"><button class="button newCancelButton">x</button></div></div>').prependTo($('#realList')).slideDown("slow");
+        $('<div class="row"><div class="itemName col-xs-3 col-xs-offset-2">'+$('.newItem-name').val()+'</div><div class="itemInput col-xs-4">'+resultInput+'</div><div class="cancelInput col-xs-3"><button class="button newCancelButton">x</button></div></div>').prependTo($('#realList')).slideDown("slow");
         $('.newItem-name').val('');
         $('.addProbability').val('');
         $('.newCancelButton').click(function(i) {
@@ -45,7 +45,7 @@ $(document).ready(function(){
   $(document).on("click","#readytoSpin",function(){
     draw();
 
-    if($('.itemName').length <= 3){
+    if($('.itemName').length < 3){
       $('.zeroWarning').text("Oops! Maybe try enter at least 2 items?");
     }
 
